@@ -30,14 +30,17 @@ pipeline {
            }
        }
 		
-	   stage("SonarQube Analysis"){
+	   stage("SonarQube Analysis") {
            steps {
-	           script {
-		        	withSonarQubeEnv(credentialsId: 'jenkins-sonarqube-token') { 
-                	sh "mvn sonar:sonar"
-		        	}
-	           }	
-           }
-       }
+               withSonarQubeEnv('sonarqube-server') {
+               sh '''
+                        mvn clean verify sonar:sonar \
+                        -Dsonar.projectKey=register-app \
+                        -Dsonar.projectName=register-app
+                        '''
+                      }
+                  }
+              }
+        }
 	}
 }
