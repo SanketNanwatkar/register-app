@@ -31,16 +31,15 @@ pipeline {
        }
 		
 	   stage("SonarQube Analysis") {
-           steps {
-               withSonarQubeEnv('sonarqube-server') {
-               sh '''
-                        mvn clean verify sonar:sonar \
-                        -Dsonar.projectKey=register-app \
-                        -Dsonar.projectName=register-app
-                        '''
-                      }
-                  }
-              }
+            steps {
+                withSonarQubeEnv('sonarqube-server') {
+                    sh '''
+                      mvn sonar:sonar \
+                      -Dsonar.projectKey=register-app \
+                      -Dsonar.projectName=register-app
+                    '''
+                }
+            }
         }
-	}
+    }
 }
