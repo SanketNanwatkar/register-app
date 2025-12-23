@@ -38,15 +38,17 @@ pipeline {
                       -Dsonar.projectKey=register-app \
                       -Dsonar.projectName=register-app
                     '''
-                }
-            }
+               		}
+				}
+	  		}
+	    }
         stage("Quality Gate"){
            steps {
                script {
                     waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonarqube-token'
                 }	
             }
-        
+			
    		 }
 	}
 }
