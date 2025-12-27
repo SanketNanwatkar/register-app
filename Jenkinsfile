@@ -88,7 +88,7 @@ pipeline {
 		stage("Trigger CD Pipeline") {
     		 steps {
                  script {
-                     sh "curl -v -k -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'ec2-13-201-167-149.ap-south-1.compute.amazonaws.com:8080/job/gitOps-register-app-cd/buildWithParameters'"
+                     sh "curl -v -k -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'ec2-3-111-51-242.ap-south-1.compute.amazonaws.com:8080/job/gitOps-register-app-cd/buildWithParameters'"
        			 }
     		}
 		}
